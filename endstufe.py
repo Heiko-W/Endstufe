@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # Author:       Heiko Wilke
 # Description:  Script to contral Digital Amplifier with Texas Instruments TAS5518 

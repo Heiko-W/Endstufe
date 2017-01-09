@@ -1,0 +1,17 @@
+[Unit]
+Description=Steuerung Endstufe
+After=runlevel3.target
+
+[Service]
+Type=simple
+User=heiko
+WorkingDirectory=/etc/Endstufe/
+ExecStart=/etc/Endstufe/endstufe.py
+SyslogIdentifier=endstufe
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multiuser.target
