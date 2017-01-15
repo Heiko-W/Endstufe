@@ -42,8 +42,14 @@ for i in range(0x04, 0x08):
     firmata.i2c_write_request(TAS5518_ADDRESS, [TAS5518_AUTOMUTE_PWM_REG, 0x05])
 
 
-# Set System Volume to 10%
-subprocess.call(["amixer", "sset", "'Master'", "20%"]) 
+# Try to Set System Volume to 25% - Otherwise quit program
+try:
+    amixer_out = subprocess.run(["amixer", "sset", "'Master'", "25%"], check=True) 
+except:
+    print("Error using amixer")
+    print("Program ends")
+    firmata.shutdown()
+    sys.exit(0)
 
 # Define exit function
 def exit_gracefully(signum, frame):
